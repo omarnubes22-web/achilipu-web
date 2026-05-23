@@ -1,0 +1,1228 @@
+<!DOCTYPE html>  
+<html lang="es" class="scroll-smooth scroll-pt-20 md:scroll-pt-24">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">  
+    <meta name="description" content="Escudero Achilipú: salsas artesanales hechas en Mexicali. Catálogo, pedidos por WhatsApp y salsas personalizadas para restaurantes.">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Escudero Achilipú - Sabor que deja huella</title>  
+    <!-- Tailwind CSS -->  
+    <script src="https://cdn.tailwindcss.com"></script>  
+    <!-- Google Fonts -->  
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Pacifico&family=Spicy+Rice&display=swap" rel="stylesheet">  
+    <!-- FontAwesome para iconos -->  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  
+      
+    <script>  
+        tailwind.config = {  
+            theme: {  
+                extend: {  
+                    colors: {  
+                        'brand-red': '#cc0000',  
+                        'brand-yellow': '#ffb300',  
+                        'brand-dark': '#0a0a0a',  
+                        'brand-gray': '#1a1a1a',  
+                        'brand-light': '#f5f5f5'  
+                    },  
+                    fontFamily: {  
+                        sans: ['Poppins', 'sans-serif'],  
+                        cursive: ['Pacifico', 'cursive'],  
+                        display: ['Spicy Rice', 'cursive'],  
+                    }  
+                }  
+            }  
+        }  
+    </script>  
+    <style>  
+        /* Fondo gris tipo ladrillos - Palas Miches */
+        body {
+            color:#1a1a1a;
+            background-color:#b8b8b8;
+            background-image:url('https://www.transparenttextures.com/patterns/brick-wall.png');
+            background-attachment:fixed;
+        }
+        .tapiz-negro {
+            background-color:#a8a8a8;
+            background-image:linear-gradient(90deg, rgba(120,120,120,.3) 1px, transparent 1px), linear-gradient(rgba(120,120,120,.3) 1px, transparent 1px), url('https://www.transparenttextures.com/patterns/brick-wall.png');
+            background-size: 50px 50px, 50px 50px, cover;
+        }  
+        .hero-pattern {
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.75)),
+                url('familia-productos.png');
+            background-size: cover;
+            background-position: center 45%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+        .galeria-showcase {
+            position: relative;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+        .galeria-aura {
+            position: absolute;
+            top: 42%;
+            left: 50%;
+            width: 95%;
+            height: 70%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle at center, rgba(204, 0, 0, 0.35) 0%, rgba(255, 179, 0, 0.12) 40%, transparent 70%);
+            filter: blur(24px);
+            pointer-events: none;
+        }
+        .galeria-frame {
+            position: relative;
+            width: 100%;
+            padding: 1rem 1.1rem;
+            border-radius: 1rem;
+            background: linear-gradient(160deg, #252525 0%, #111 50%, #1a1a1a 100%);
+            box-shadow:
+                0 0 0 1px rgba(255, 179, 0, 0.3),
+                0 0 40px rgba(204, 0, 0, 0.2),
+                0 20px 50px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            overflow: hidden;
+        }
+        .galeria-frame::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(120deg, #ffb300, #cc0000, #ffb300, #cc0000);
+            background-size: 250% 250%;
+            animation: galeria-shine 6s linear infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        @keyframes galeria-shine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        .galeria-spotlight {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 75% 55% at 50% 35%, rgba(255, 179, 0, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .galeria-img-shell {
+            position: relative;
+            z-index: 2;
+            border-radius: 0.65rem;
+            overflow: hidden;
+            background: #0a0a0a;
+            min-height: 260px;
+            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .galeria-img-shell::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            box-shadow: inset 0 0 36px 10px rgba(10, 10, 10, 0.45);
+            pointer-events: none;
+        }
+        .galeria-img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-height: 240px;
+            object-fit: contain;
+            object-position: center;
+            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.5));
+        }
+        .galeria-caption {
+            margin-top: 1.15rem;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #ffb300;
+            text-shadow: 0 0 12px rgba(255, 179, 0, 0.35);
+        }
+        @media (min-width: 640px) {
+            .galeria-img-shell {
+                min-height: 300px;
+                height: 300px;
+            }
+            .galeria-img {
+                max-height: 280px;
+            }
+        }
+        .cta-hero-primary {
+            box-shadow: 0 4px 24px rgba(204, 0, 0, 0.45);
+            animation: cta-pulse 2.8s ease-in-out infinite;
+        }
+        @keyframes cta-pulse {
+            0%, 100% { box-shadow: 0 4px 24px rgba(204, 0, 0, 0.45); }
+            50% { box-shadow: 0 4px 32px rgba(204, 0, 0, 0.65), 0 0 20px rgba(255, 179, 0, 0.15); }
+        }
+        .trust-strip {
+            border-top: 1px solid rgba(255, 179, 0, 0.15);
+            border-bottom: 1px solid rgba(255, 179, 0, 0.15);
+        }
+        .trust-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 179, 0, 0.15);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #d1d5db;
+        }
+        .catalog-cta-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: rgba(37, 211, 102, 0.12);
+            border: 1px solid rgba(37, 211, 102, 0.35);
+            color: #86efac;
+            font-size: 0.8125rem;
+            font-weight: 700;
+        }
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .reveal-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #barra-movil-cta {
+            box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .product-card {
+            background: linear-gradient(145deg, #e8e8e8, #d0d0d0);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.5);
+            border-color: rgba(100, 100, 100, 0.5);
+        }
+        .product-card:focus-within {
+            border-color: rgba(204, 0, 0, 0.7);
+        }  
+        @media (hover: hover) {
+            .product-card:hover {
+                transform: translateY(-8px);
+                border-color: #cc0000;
+                background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+            }
+        }
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 0;
+        }
+        .btn-whatsapp-order {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-height: 3.25rem;
+            padding: 0.875rem 1rem;
+            border-radius: 0.75rem;
+            background-color: #25D366;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn-whatsapp-order:hover {
+            background-color: #20bd5a;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
+        }
+        .btn-whatsapp-order:active {
+            transform: scale(0.98);
+            background-color: #128C7E;
+        }
+        .product-select {
+            width: 100%;
+            background-color: #1f2937;
+            color: #fff;
+            border-radius: 0.5rem;
+            padding: 0.625rem 0.75rem;
+            border: 1px solid #4b5563;
+            font-size: 1rem;
+            min-height: 3rem;
+            -webkit-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffb300' viewBox='0 0 24 24'%3E%3Cpath d='M12 16l-6-6h12z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1.25rem;
+            padding-right: 2.5rem;
+        }
+        .product-select:focus {
+            outline: none;
+            border-color: #ffb300;
+            box-shadow: 0 0 0 2px rgba(255, 179, 0, 0.25);
+        }
+        @keyframes pulse-whatsapp {  
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }  
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }  
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }  
+        }  
+        .whatsapp-float {  
+            animation: pulse-whatsapp 2s infinite;  
+        }  
+        .logo-text {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .kompa-showcase-img {
+            width: auto;
+            max-width: min(100%, 220px);
+            max-height: 12rem;
+            object-fit: contain;
+        }
+        .kompa-bottle-img {
+            border-radius: 0.5rem;
+        }
+        @media (min-width: 640px) {
+            .kompa-showcase-img {
+                max-width: 260px;
+                max-height: 15rem;
+            }
+        }
+        @media (min-width: 768px) {
+            .kompa-showcase-img {
+                max-width: 300px;
+                max-height: 17rem;
+            }
+        }
+        .footer-climax {
+            position: relative;
+            overflow: hidden;
+            border-top: 3px solid #cc0000;
+        }
+        .footer-climax.tapiz-negro {
+            background-color: #0a0a0a;
+        }
+        .footer-climax-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(204, 0, 0, 0.18) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .footer-climax-title {
+            text-shadow: 0 0 40px rgba(204, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.8);
+        }
+        .footer-climax-sub {
+            text-shadow: 0 0 24px rgba(255, 179, 0, 0.35);
+        }
+        .footer-badge {
+            background: linear-gradient(145deg, #1f1f1f, #141414);
+            border: 1px solid rgba(255, 179, 0, 0.25);
+        }
+        .footer-logo-stage {
+            position: relative;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+        }
+        .footer-logo-aura {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            width: 115%;
+            height: 115%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle at center, rgba(204, 0, 0, 0.55) 0%, rgba(255, 179, 0, 0.2) 35%, transparent 68%);
+            filter: blur(28px);
+            animation: footer-logo-breathe 3.5s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes footer-logo-breathe {
+            0%, 100% { opacity: 0.65; transform: translate(-50%, -50%) scale(0.95); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        }
+        .footer-logo-frame {
+            position: relative;
+            padding: 1.5rem 1.75rem;
+            border-radius: 1rem;
+            background: linear-gradient(160deg, #252525 0%, #111111 50%, #1a1a1a 100%);
+            box-shadow:
+                0 0 0 1px rgba(255, 179, 0, 0.35),
+                0 0 50px rgba(204, 0, 0, 0.35),
+                0 25px 60px rgba(0, 0, 0, 0.65),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08),
+                inset 0 -12px 40px rgba(204, 0, 0, 0.12);
+            overflow: hidden;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .footer-logo-frame::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(120deg, #ffb300, #cc0000, #ffb300, #cc0000, #ffb300);
+            background-size: 250% 250%;
+            animation: footer-logo-shine 5s linear infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 0;
+        }
+        @keyframes footer-logo-shine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        .footer-logo-frame::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 45%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+            transform: rotate(25deg);
+            animation: footer-logo-sweep 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes footer-logo-sweep {
+            0%, 100% { left: -60%; opacity: 0; }
+            15% { opacity: 1; }
+            50% { left: 120%; opacity: 1; }
+            65% { opacity: 0; }
+        }
+        .footer-logo-spotlight {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 55% at 50% 30%, rgba(255, 179, 0, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .footer-logo-img {
+            position: relative;
+            z-index: 2;
+            height: 7.75rem;
+            width: auto;
+            max-width: min(100%, 340px);
+            object-fit: contain;
+            filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 20px rgba(204, 0, 0, 0.25));
+            transition: transform 0.35s ease;
+        }
+        @media (min-width: 640px) {
+            .footer-logo-frame { padding: 1.75rem 2rem; }
+            .footer-logo-img { height: 9rem; }
+        }
+        @media (min-width: 768px) {
+            .footer-logo-img { height: 10.5rem; }
+        }
+        @media (min-width: 1024px) {
+            .footer-logo-img { height: 11.5rem; }
+        }
+        .footer-logo-stage:hover .footer-logo-frame {
+            transform: translateY(-4px);
+            box-shadow:
+                0 0 0 1px rgba(255, 179, 0, 0.55),
+                0 0 70px rgba(204, 0, 0, 0.5),
+                0 30px 70px rgba(0, 0, 0, 0.7),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        .footer-logo-stage:hover .footer-logo-img {
+            transform: scale(1.04);
+        }
+        .footer-logo-corners {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            pointer-events: none;
+        }
+        .footer-logo-corners i {
+            position: absolute;
+            font-size: 0.75rem;
+            color: #ffb300;
+            opacity: 0.7;
+        }
+        .footer-logo-corners i:nth-child(1) { top: 0.5rem; left: 0.5rem; }
+        .footer-logo-corners i:nth-child(2) { top: 0.5rem; right: 0.5rem; transform: scaleX(-1); }
+        .footer-logo-corners i:nth-child(3) { bottom: 0.5rem; left: 0.5rem; transform: scaleY(-1); }
+        .footer-logo-corners i:nth-child(4) { bottom: 0.5rem; right: 0.5rem; transform: scale(-1); }
+        .footer-logo-caption {
+            margin-top: 1.25rem;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: #ffb300;
+            text-shadow: 0 0 12px rgba(255, 179, 0, 0.4);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .footer-logo-aura,
+            .footer-logo-frame::before,
+            .footer-logo-frame::after,
+            .galeria-frame::before,
+            .cta-hero-primary {
+                animation: none;
+            }
+            .reveal-section {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+        @media (max-width: 767px) {
+            .hero-pattern {
+                background-attachment: scroll;
+                background-position: center 50%;
+            }
+            .galeria-img {
+                max-height: 260px;
+            }
+            body {
+                padding-bottom: calc(7.5rem + env(safe-area-inset-bottom, 0px));
+            }
+            .whatsapp-float {
+                bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px)) !important;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+                line-height: 1.15;
+            }
+            .hero-content > p {
+                font-size: 1rem;
+                line-height: 1.55;
+                margin-bottom: 1.75rem;
+            }
+            #presentaciones {
+                padding-top: 2.5rem;
+                padding-bottom: 2.5rem;
+            }
+            .galeria-frame {
+                padding: 0.75rem;
+            }
+            .galeria-img-shell {
+                min-height: 220px;
+                height: 220px;
+            }
+            .galeria-img {
+                max-height: 200px;
+            }
+            #productos {
+                padding-top: 2.5rem;
+                padding-bottom: 2.5rem;
+            }
+            #productos .grid {
+                gap: 1.25rem;
+            }
+            #productos h2 {
+                font-size: 2rem;
+                line-height: 1.1;
+            }
+            #productos > div > div > p {
+                font-size: 0.9375rem;
+                padding: 0.625rem 1rem;
+            }
+            .product-card h3 {
+                font-size: 1.375rem;
+            }
+            .product-card .text-sm {
+                font-size: 0.9375rem;
+                line-height: 1.5;
+            }
+            .product-card > div:last-child,
+            .product-card .bg-brand-gray {
+                padding: 1.125rem !important;
+            }
+            .product-card .h-64 {
+                height: 13rem;
+            }
+            .product-select {
+                font-size: 1.0625rem;
+                min-height: 3.25rem;
+                padding: 0.75rem 2.5rem 0.75rem 0.875rem;
+            }
+            .btn-whatsapp-order {
+                min-height: 3.5rem;
+                font-size: 1.0625rem;
+                padding: 1rem;
+                border-radius: 0.875rem;
+            }
+            .whatsapp-float {
+                width: 3.75rem;
+                height: 3.75rem;
+                bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+                right: max(1rem, env(safe-area-inset-right, 0px));
+            }
+            #restaurantes {
+                padding-top: 2.5rem;
+                padding-bottom: 2.5rem;
+            }
+            #restaurantes .grid {
+                gap: 2rem;
+            }
+            .footer-climax {
+                padding-top: 2.5rem;
+                padding-bottom: 2.5rem;
+            }
+            .footer-climax .font-display {
+                font-size: 2.25rem;
+            }
+            .footer-climax .footer-climax-title {
+                font-size: 1.75rem;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+            #productos .grid {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>  
+<body class="tapiz-negro antialiased selection:bg-brand-red selection:text-white">  
+  
+    <!-- Navegación -->  
+    <nav class="bg-brand-dark/95 backdrop-blur-sm border-b border-gray-800 fixed w-full z-50 top-0 transition-all duration-300" id="navbar">  
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  
+            <div class="flex justify-between h-16 sm:h-20 md:h-24">
+                <div class="flex items-center min-w-0">
+                    <a href="#" class="flex flex-col justify-center leading-none">
+                       <img src="logo-achilipu.jpg" alt="Logo Achilipú" class="h-14 sm:h-16 md:h-24 w-auto max-w-[min(100%,220px)] object-contain">
+                    </a>  
+                </div>  
+                <!-- Menú Desktop -->  
+                <div class="hidden md:flex items-center space-x-8">  
+                    <a href="#inicio" class="text-gray-300 hover:text-brand-yellow font-semibold transition">Inicio</a>  
+                    <a href="#productos" class="text-gray-300 hover:text-brand-yellow font-semibold transition">Catálogo</a>  
+                    <a href="#restaurantes" class="text-gray-300 hover:text-brand-yellow font-semibold transition">Para Restaurantes</a>  
+                    <a href="javascript:void(0)" onclick="abrirWhatsAppGeneral()" class="bg-brand-red text-white px-6 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-[0_0_15px_rgba(204,0,0,0.5)]">Pedir Ahora</a>  
+                </div>  
+                <!-- Botón Móvil -->  
+                <div class="flex items-center md:hidden">  
+                    <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú" class="text-brand-yellow hover:text-white focus:outline-none p-2">  
+                        <i id="mobile-menu-icon" class="fa-solid fa-bars text-2xl sm:text-3xl"></i>  
+                    </button>  
+                </div>  
+            </div>  
+        </div>  
+        <!-- Menú Móvil -->  
+        <div id="mobile-menu" class="md:hidden hidden bg-brand-gray border-t border-gray-800 absolute w-full">  
+            <div class="px-4 pt-2 pb-6 space-y-2 text-center">  
+                <a href="#inicio" class="block px-3 py-3 text-white hover:text-brand-yellow font-semibold text-lg">Inicio</a>  
+                <a href="#productos" class="block px-3 py-3 text-white hover:text-brand-yellow font-semibold text-lg">Catálogo</a>  
+                <a href="#restaurantes" class="block px-3 py-3 text-white hover:text-brand-yellow font-semibold text-lg">Para Restaurantes</a>  
+                <a href="javascript:void(0)" onclick="abrirWhatsAppGeneral()" class="block px-3 py-3 bg-brand-red text-white font-bold text-lg mt-4 rounded-full">Pedir ahora</a>  
+            </div>  
+        </div>  
+    </nav>  
+  
+    <!-- Hero Section -->  
+    <header id="inicio" class="hero-pattern min-h-screen flex items-center justify-center text-center pt-20 pb-12 sm:pb-0">
+  <div class="hero-content max-w-5xl mx-auto px-4 flex flex-col items-center">
+    
+    <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 mb-4 px-2 max-w-full">
+      <span class="hidden sm:block w-8 md:w-12 h-[1px] bg-brand-yellow shrink-0"></span>
+      <span class="text-brand-yellow font-bold tracking-wide sm:tracking-[0.15em] uppercase text-xs sm:text-sm text-center">100% Artesanales • Hecho en Mexicali, B.C.</span>
+      <span class="hidden sm:block w-8 md:w-12 h-[1px] bg-brand-yellow shrink-0"></span>
+    </div>
+
+    <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 uppercase tracking-tight leading-tight px-2">
+      Sabor que <br>
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-orange-500">Deja Huella.</span>
+    </h1>
+
+    <p class="text-base sm:text-lg md:text-2xl text-gray-300 mb-10 font-light max-w-3xl mx-auto px-2">
+      En <strong>Escudero Achilipu</strong> creamos salsas artesanales con ingredientes de calidad, recetas auténticas y el sabor que tus clientes aman.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center w-full max-w-sm sm:max-w-none mx-auto sm:mx-0 px-2">
+      <a href="#productos" class="cta-hero-primary w-full sm:w-auto bg-brand-red text-white px-8 py-4 rounded-full font-bold text-base sm:text-lg hover:bg-red-700 transition text-center">
+        Ver catálogo <i class="fa-solid fa-pepper-hot"></i>
+      </a>
+      <a href="#restaurantes" class="w-full sm:w-auto bg-transparent border-2 border-brand-yellow text-brand-yellow px-8 py-4 rounded-full font-bold text-base sm:text-lg hover:bg-brand-yellow hover:text-black transition text-center">
+        Para restaurantes <i class="fa-solid fa-store"></i>
+      </a>
+    </div>
+  </div>
+</header>
+
+    <div class="trust-strip tapiz-negro py-4">
+        <div class="max-w-5xl mx-auto px-4 flex flex-wrap justify-center gap-2 sm:gap-3">
+            <span class="trust-pill"><i class="fa-brands fa-whatsapp text-[#25D366]"></i> Pedido directo</span>
+            <span class="trust-pill"><i class="fa-solid fa-hand-sparkles text-brand-yellow"></i> 100% artesanal</span>
+            <span class="trust-pill"><i class="fa-solid fa-location-dot text-brand-red"></i> Mexicali, B.C.</span>
+            <span class="trust-pill"><i class="fa-solid fa-bolt text-brand-yellow"></i> Respuesta rápida</span>
+        </div>
+    </div>
+
+    <section id="presentaciones" class="reveal-section py-14 sm:py-20 tapiz-negro border-b border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-14">
+                <p class="text-brand-yellow text-xs sm:text-sm font-bold uppercase tracking-[0.2em] mb-2">Escudero Achilipú</p>
+                <h2 class="font-display text-3xl sm:text-4xl md:text-5xl text-brand-yellow tracking-wide">Nuestras presentaciones</h2>
+                <div class="w-16 sm:w-24 h-1 bg-brand-red mx-auto rounded mt-4 mb-3"></div>
+                <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">Desde botella personal hasta garrafa: la misma calidad artesanal en cada formato.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-stretch">
+                <figure class="galeria-showcase">
+                    <span class="galeria-aura" aria-hidden="true"></span>
+                    <div class="galeria-frame">
+                        <span class="galeria-spotlight" aria-hidden="true"></span>
+                        <div class="galeria-img-shell">
+                            <img src="hero-productos.png" alt="Línea Achilipú en varios tamaños: botellas y garrafas" class="galeria-img" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                    <figcaption class="galeria-caption">Variedad de formatos</figcaption>
+                </figure>
+                <figure class="galeria-showcase">
+                    <span class="galeria-aura" aria-hidden="true"></span>
+                    <div class="galeria-frame">
+                        <span class="galeria-spotlight" aria-hidden="true"></span>
+                        <div class="galeria-img-shell">
+                            <img src="familia-productos.png" alt="Familia de salsas Escudero Achilipú de 1 litro" class="galeria-img" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                    <figcaption class="galeria-caption">Línea completa 1 litro</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+<section id="productos" class="reveal-section py-16 sm:py-24 tapiz-negro relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-12 md:mb-16 px-2">
+      <h2 class="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-brand-yellow mb-2 tracking-wide leading-tight break-words">ACHILIPU VA CON TODO</h2>
+      <div class="w-16 sm:w-24 h-1 sm:h-2 bg-brand-red mx-auto rounded mb-4 sm:mb-6"></div>
+      <p class="text-sm sm:text-lg md:text-2xl text-white font-medium tracking-wide bg-black/40 px-4 sm:px-6 py-2 rounded-lg backdrop-blur-sm inline-block max-w-2xl">Explora nuestras recetas y encuentra el tamaño ideal para tu menú o tu hogar.</p>
+      <p class="catalog-cta-hint"><i class="fa-brands fa-whatsapp text-lg"></i> Elige tu salsa y toca <strong class="text-white">Pedir ahora</strong> — te atendemos al instante</p>
+    </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">  
+                  
+                <div class="product-card rounded-2xl p-1 transition-all duration-300 border border-gray-800 flex flex-col group">  
+                    <div class="bg-brand-dark rounded-t-xl h-64 flex items-center justify-center relative overflow-hidden">  
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60 z-10"></div>  
+                        <img src="salsa-inglesa.jpeg" alt="Salsa Inglesa Achilipú" class="product-img" loading="lazy">  
+                        <div class="absolute top-4 left-4 z-20">  
+                            <span class="bg-brand-red text-white text-xs font-black px-3 py-1 rounded uppercase tracking-wide">Receta Original</span>  
+                        </div>  
+                    </div>  
+                    <div class="p-6 flex flex-col flex-grow bg-brand-gray rounded-b-xl">  
+                        <h3 class="font-black text-2xl text-white mb-1 uppercase">Salsa Inglesa</h3>  
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">El toque clásico y profundo, ideal para marinar carnes, preparar bebidas y sazonar tus platillos favoritos. </p>
+
+<div class="mb-5">
+    <label for="inglesa-size" class="block text-white text-sm font-bold mb-2">Elige el tamaño:</label>
+    <select id="inglesa-size" class="product-select" onchange="
+        const opt = this.options[this.selectedIndex];
+        document.getElementById('btn-inglesa').setAttribute('onclick', `pedirPorWhatsApp('${opt.dataset.name}', ${opt.value})`);
+    ">
+        <option value="20" data-name="Salsa Inglesa (160 ML)">160 ML - $20</option>
+        <option value="110" data-name="Salsa Inglesa (1 Litro)" selected>1 Litro - $110</option>
+        <option value="400" data-name="Salsa Inglesa (Galón 3.75 L)">Galón (3.75 L) - $400</option>
+        <option value="570" data-name="Salsa Inglesa (Garrafa 6 L)">Garrafa (6 L) - $570</option>
+    </select>
+</div>
+<button id="btn-inglesa" onclick="pedirPorWhatsApp('Salsa Inglesa (1 Litro)', 110)" class="btn-whatsapp-order">
+    <i class="fa-brands fa-whatsapp text-xl"></i> PEDIR AHORA
+</button>
+  
+                    </div>  
+                </div>
+                <div class="product-card rounded-2xl p-1 transition-all duration-300 border border-gray-800 flex flex-col group">  
+                    <div class="bg-brand-dark rounded-t-xl h-64 flex items-center justify-center relative overflow-hidden">  
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60 z-10"></div>  
+                        <img src="salsa-aguachilera.jpeg" alt="Salsa Aguachilera Achilipú" class="product-img" loading="lazy">  
+                        <div class="absolute top-4 left-4 z-20">  
+                            <span class="bg-orange-600 text-white text-xs font-black px-3 py-1 rounded uppercase tracking-wide">Con Chiltepín</span>  
+                        </div>  
+                    </div>  
+                    <div class="p-6 flex flex-col flex-grow bg-brand-gray rounded-b-xl">  
+                        <h3 class="font-black text-2xl text-white mb-1 uppercase">Salsa Aguachilera</h3>  
+                         <p class="text-gray-400 text-sm mb-4 flex-grow">El picor exacto del chiltepín para levantar cualquier marisco. Perfecta para aguachiles y ceviches.</p>
+
+<div class="mb-5">
+    <label for="aguachilera-size" class="block text-white text-sm font-bold mb-2">Elige el tamaño:</label>
+    <select id="aguachilera-size" class="product-select" onchange="
+        const opt = this.options[this.selectedIndex];
+        document.getElementById('btn-aguachilera').setAttribute('onclick', `pedirPorWhatsApp('${opt.dataset.name}', ${opt.value})`);
+    ">
+        <option value="20" data-name="Salsa Aguachilera (160 ML)">160 ML - $20</option>
+        <option value="100" data-name="Salsa Aguachilera (1 Litro)" selected>1 Litro - $100</option>
+        <option value="380" data-name="Salsa Aguachilera (Galón 3.75 L)">Galón (3.75 L) - $380</option>
+        <option value="570" data-name="Salsa Aguachilera (Garrafa 6 L)">Garrafa (6 L) - $570</option>
+    </select>
+</div>
+<button id="btn-aguachilera" onclick="pedirPorWhatsApp('Salsa Aguachilera (1 Litro)', 100)" class="btn-whatsapp-order">
+    <i class="fa-brands fa-whatsapp text-xl"></i> PEDIR AHORA
+</button>
+ 
+                    </div>  
+                </div>
+                <div class="product-card rounded-2xl p-1 transition-all duration-300 border border-gray-800 flex flex-col group">  
+                    <div class="bg-brand-dark rounded-t-xl h-64 flex items-center justify-center relative overflow-hidden">  
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60 z-10"></div>  
+                        <img src="jugo-sasonador.jpeg" alt="Jugo Sazonador Achilipú" class="product-img" loading="lazy">  
+                        <div class="absolute top-4 left-4 z-20">  
+                            <span class="bg-brand-yellow text-brand-dark text-xs font-black px-3 py-1 rounded uppercase tracking-wide">Receta Original</span>  
+                        </div>  
+                    </div>  
+                    <div class="p-6 flex flex-col flex-grow bg-brand-gray rounded-b-xl">  
+                        <h3 class="font-black text-2xl text-white mb-1 uppercase">Jugo Sazonador</h3>  
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">El complemento que no puede faltar en la mesa. Realza el sabor de snacks, botanas y platillos fuertes.</p>
+
+<div class="mb-5">
+    <label for="sazonador-size" class="block text-white text-sm font-bold mb-2">Elige el tamaño:</label>
+    <select id="sazonador-size" class="product-select" onchange="
+        const opt = this.options[this.selectedIndex];
+        document.getElementById('btn-sazonador').setAttribute('onclick', `pedirPorWhatsApp('${opt.dataset.name}', ${opt.value})`);
+    ">
+        <option value="25" data-name="Jugo Sazonador (160 ML)">160 ML - $25</option>
+        <option value="140" data-name="Jugo Sazonador (1 Litro)" selected>1 Litro - $140</option>
+        <option value="520" data-name="Jugo Sazonador (Galón 3.75 L)">Galón (3.75 L) - $520</option>
+        <option value="780" data-name="Jugo Sazonador (Garrafa 6 L)">Garrafa (6 L) - $780</option>
+    </select>
+</div>
+<button id="btn-sazonador" onclick="pedirPorWhatsApp('Jugo Sazonador (1 Litro)', 140)" class="btn-whatsapp-order">
+    <i class="fa-brands fa-whatsapp text-xl"></i> PEDIR AHORA
+</button>
+  
+                    </div>  
+                </div>
+                <div class="product-card rounded-2xl p-1 transition-all duration-300 border border-gray-800 flex flex-col group">  
+                    <div class="bg-brand-dark rounded-t-xl h-64 flex items-center justify-center relative overflow-hidden">  
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60 z-10"></div>  
+                        <img src="chabe-mix.jpeg" alt="Chabe Mix Achilipú" class="product-img" loading="lazy">  
+                        <div class="absolute top-4 left-4 z-20">  
+                            <span class="bg-red-800 text-white text-xs font-black px-3 py-1 rounded uppercase tracking-wide">Especial</span>  
+                        </div>  
+                    </div>  
+                    <div class="p-6 flex flex-col flex-grow bg-brand-gray rounded-b-xl">  
+                        <h3 class="font-black text-2xl text-white mb-1 uppercase">Chabe Mix</h3>  
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">La mezcla secreta de la casa, lista para crear las mejores micheladas y bebidas preparadas.</p>
+
+<div class="mb-5">
+    <label for="chabe-size" class="block text-white text-sm font-bold mb-2">Elige el tamaño:</label>
+    <select id="chabe-size" class="product-select" onchange="
+        const opt = this.options[this.selectedIndex];
+        document.getElementById('btn-chabe').setAttribute('onclick', `pedirPorWhatsApp('${opt.dataset.name}', ${opt.value})`);
+    ">
+        <option value="100" data-name="Chabe Mix (1 Litro)" selected>1 Litro - $100</option>
+        <option value="380" data-name="Chabe Mix (Galón 3.75 L)">Galón (3.75 L) - $380</option>
+        <option value="570" data-name="Chabe Mix (Garrafa 6 L)">Garrafa (6 L) - $570</option>
+    </select>
+</div>
+<button id="btn-chabe" onclick="pedirPorWhatsApp('Chabe Mix (1 Litro)', 100)" class="btn-whatsapp-order">
+    <i class="fa-brands fa-whatsapp text-xl"></i> PEDIR AHORA
+</button>
+ 
+                    </div>  
+                </div>
+                <div class="product-card rounded-2xl p-1 transition-all duration-300 border border-gray-800 flex flex-col group">  
+                    <div class="bg-brand-dark rounded-t-xl h-64 flex items-center justify-center relative overflow-hidden">  
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60 z-10"></div>  
+                        <img src="salsa-soya.jpeg" alt="Salsa de Soya Achilipú" class="product-img" loading="lazy">  
+                        <div class="absolute top-4 left-4 z-20">  
+                            <span class="bg-red-800 text-white text-xs font-black px-3 py-1 rounded uppercase tracking-wide">Receta Original</span>  
+                        </div>  
+                    </div>  
+                    <div class="p-6 flex flex-col flex-grow bg-brand-gray rounded-b-xl">  
+                        <h3 class="font-black text-2xl text-white mb-1 uppercase">Salsa de Soya</h3>  
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">El toque ideal para resaltar tus platillos orientales y mariscos.</p>
+
+<div class="mb-5">
+    <label for="soya-size" class="block text-white text-sm font-bold mb-2">Elige el tamaño:</label>
+    <select id="soya-size" class="product-select" onchange="
+        const opt = this.options[this.selectedIndex];
+        document.getElementById('btn-soya').setAttribute('onclick', `pedirPorWhatsApp('${opt.dataset.name}', ${opt.value})`);
+    ">
+        <option value="40" data-name="Salsa Soya (1 Litro)" selected>1 Litro - $40</option>
+        <option value="140" data-name="Salsa Soya (Galón 3.75 L)">Galón (3.75 L) - $140</option>
+        <option value="210" data-name="Salsa Soya (Garrafa 6 L)">Garrafa (6 L) - $210</option>
+    </select>
+</div>
+<button id="btn-soya" onclick="pedirPorWhatsApp('Salsa Soya (1 Litro)', 40)" class="btn-whatsapp-order">
+    <i class="fa-brands fa-whatsapp text-xl"></i> PEDIR AHORA
+</button>
+  
+                    </div>  
+                </div>
+                <div class="product-card rounded-2xl p-1 transition-all duration-300 border border-gray-800 flex flex-col group">  
+                    <div class="bg-brand-dark rounded-t-xl h-64 flex items-center justify-center relative overflow-hidden">  
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60 z-10"></div>  
+                        <img src="palas-miches.jpeg" alt="Pa Las Miches Achilipú" class="product-img" loading="lazy">  
+                        <div class="absolute top-4 left-4 z-20">  
+                            <span class="bg-red-800 text-white text-xs font-black px-3 py-1 rounded uppercase tracking-wide">Especial</span>  
+                        </div>  
+                    </div>  
+                    <div class="p-6 flex flex-col flex-grow bg-brand-gray rounded-b-xl">  
+                        <h3 class="font-black text-2xl text-white mb-1 uppercase">Pa Las Miches</h3>  
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">La base perfecta y lista para preparar las mejores micheladas.</p>
+
+<div class="mb-5">
+    <label for="miches-size" class="block text-white text-sm font-bold mb-2">Elige el tamaño:</label>
+    <select id="miches-size" class="product-select" onchange="
+        const opt = this.options[this.selectedIndex];
+        document.getElementById('btn-miches').setAttribute('onclick', `pedirPorWhatsApp('${opt.dataset.name}', ${opt.value})`);
+    ">
+        <option value="100" data-name="Pa' las Miches (1 Litro)" selected>1 Litro - $100</option>
+        <option value="380" data-name="Pa' las Miches (Galón 3.75 L)">Galón (3.75 L) - $380</option>
+        <option value="570" data-name="Pa' las Miches (Garrafa 6 L)">Garrafa (6 L) - $570</option>
+    </select>
+</div>
+<button id="btn-miches" onclick="pedirPorWhatsApp('Pa\' las Miches (1 Litro)', 100)" class="btn-whatsapp-order">
+    <i class="fa-brands fa-whatsapp text-xl"></i> PEDIR AHORA
+</button>
+
+  
+                    </div>  
+                </div>
+                <div class="product-card rounded-2xl p-1 transition-all duration-300 border border-gray-800 flex flex-col group">  
+                    <div class="bg-brand-dark rounded-t-xl h-64 flex items-center justify-center relative overflow-hidden">  
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60 z-10"></div>  
+                        <img src="salsa-almejera.jpeg" alt="Salsa Almejera Achilipú" class="product-img" loading="lazy">  
+                        <div class="absolute top-4 left-4 z-20">  
+                            <span class="bg-red-800 text-white text-xs font-black px-3 py-1 rounded uppercase tracking-wide">Especial</span>  
+                        </div>  
+                    </div>  
+                    <div class="p-6 flex flex-col flex-grow bg-brand-gray rounded-b-xl">  
+                        <h3 class="font-black text-2xl text-white mb-1 uppercase">Salsa Almejera</h3>  
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">El balance exacto de especias para resaltar el sabor de almejas, ostiones y mariscos en general.</p>
+
+<div class="mb-5">
+    <label for="almejera-size" class="block text-white text-sm font-bold mb-2">Elige el tamaño:</label>
+    <select id="almejera-size" class="product-select" onchange="
+        const opt = this.options[this.selectedIndex];
+        document.getElementById('btn-almejera').setAttribute('onclick', `pedirPorWhatsApp('${opt.dataset.name}', ${opt.value})`);
+    ">
+        <option value="25" data-name="Salsa Almejera (160 ML)">160 ML - $25</option>
+        <option value="140" data-name="Salsa Almejera (1 Litro)" selected>1 Litro - $140</option>
+        <option value="520" data-name="Salsa Almejera (Galón 3.75 L)">Galón (3.75 L) - $520</option>
+        <option value="780" data-name="Salsa Almejera (Garrafa 6 L)">Garrafa (6 L) - $780</option>
+    </select>
+</div>
+<button id="btn-almejera" onclick="pedirPorWhatsApp('Salsa Almejera (1 Litro)', 140)" class="btn-whatsapp-order">
+    <i class="fa-brands fa-whatsapp text-xl"></i> PEDIR AHORA
+</button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="restaurantes" class="reveal-section py-16 sm:py-24 tapiz-negro relative overflow-hidden border-t border-b border-gray-800">  
+        <div class="absolute -right-20 -top-20 opacity-5">  
+            <i class="fa-solid fa-pepper-hot text-[30rem]"></i>  
+        </div>  
+  
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">  
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">  
+                  
+                <div class="lg:order-2">  
+                    <div class="inline-block bg-brand-red text-white px-4 py-1 rounded font-black uppercase text-sm mb-6">  
+                        <i class="fa-solid fa-utensils mr-2"></i> Para Restauranteros  
+                    </div>  
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-6 leading-tight uppercase">  
+                        Más que vender, creamos <span class="text-brand-yellow">alianzas y marcas</span> con sabor.  
+                    </h2>  
+                      
+                    <div class="space-y-8 mt-10">  
+                        <div class="flex gap-4 items-start">  
+                            <div class="bg-gray-800 w-12 h-12 rounded flex items-center justify-center shrink-0">  
+                                <i class="fa-solid fa-book-open text-brand-yellow text-xl"></i>  
+                            </div>  
+                            <div>  
+                                <h4 class="text-xl font-bold text-white mb-1">Catálogo de Sabores</h4>  
+                                <p class="text-gray-400">Explora nuestras recetas únicas y encuentra la ideal para tu menú.</p>  
+                            </div>  
+                        </div>  
+                          
+                        <div class="flex gap-4 items-start">  
+                            <div class="bg-gray-800 w-12 h-12 rounded flex items-center justify-center shrink-0">  
+                                <i class="fa-solid fa-tag text-brand-yellow text-xl"></i>  
+                            </div>  
+                            <div>  
+                                <h4 class="text-xl font-bold text-white mb-1">Tu Salsa, Tu Marca</h4>  
+                                <p class="text-gray-400">Personalizamos tu salsa con el logo y nombre de tu restaurante.</p>  
+                            </div>  
+                        </div>  
+  
+                        <div class="flex gap-4 items-start">  
+                            <div class="bg-gray-800 w-12 h-12 rounded flex items-center justify-center shrink-0">  
+                                <i class="fa-solid fa-bag-shopping text-brand-yellow text-xl"></i>  
+                            </div>  
+                            <div>  
+                                <h4 class="text-xl font-bold text-white mb-1">Lleva tu sabor a casa</h4>  
+                                <p class="text-gray-400">Tus clientes podrán llevarse a casa el sabor que disfrutan en tu restaurante, en una botella de salsa única.</p>  
+                            </div>  
+                        </div>  
+                    </div>  
+                </div>  
+  
+                <div class="lg:order-1 bg-[#111111] p-8 md:p-12 rounded-3xl border border-gray-700 shadow-2xl text-center">  
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-black text-brand-yellow mb-2 uppercase leading-snug">Personalizar tu salsa = presencia de tu marca</h3>  
+                    <p class="text-gray-400 mb-8">Tu receta, tu identidad, tu salsa, tu legado.</p>  
+                      
+                    <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-2xl sm:text-3xl md:text-5xl font-black text-gray-600 mb-10">  
+                        <div class="flex flex-col items-center">  
+                            <i class="fa-solid fa-bottle-droplet text-white"></i>  
+                            <span class="text-xs font-normal text-gray-500 mt-2">Nuestra Salsa</span>  
+                        </div>  
+                        <span class="text-brand-red">+</span>  
+                        <div class="flex flex-col items-center">  
+                            <div class="w-16 h-16 md:w-20 md:h-20 border-2 border-dashed border-gray-500 rounded-full flex items-center justify-center text-sm font-bold text-white">TU LOGO</div>  
+                        </div>  
+                        <span class="text-brand-red">=</span>  
+                        <div class="flex flex-col items-center bg-brand-red/10 p-4 rounded-xl border border-brand-red/30">  
+                            <i class="fa-solid fa-star text-brand-yellow mb-2"></i>  
+                            <span class="text-sm md:text-lg font-black text-white">TU MARCA</span>  
+                        </div>  
+                    </div>  
+  
+                    <div class="mt-8 pt-8 border-t border-gray-800">  
+                        <p class="text-xs text-brand-yellow font-bold uppercase tracking-widest mb-6 text-center">Salsa de la casa en alianza con:</p>  
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-10">  
+                            <img src="logo-kompatavo.jpg" alt="Logo Mariscos El Kompa Tavo" class="kompa-showcase-img shrink-0" loading="lazy">
+                            <img src="botella-kompatavo-src.png" alt="Botella de salsa de la casa Mariscos El Kompa Tavo" class="kompa-showcase-img kompa-bottle-img shrink-0" loading="lazy">
+                        </div>
+                        <div class="text-center mt-6 px-2">
+                            <h4 class="text-lg sm:text-xl font-black text-white uppercase italic">Mariscos El Kompa Tavo</h4>  
+                            <p class="text-sm text-gray-400 max-w-md mx-auto mt-2 leading-relaxed">El sabor único que disfrutas aquí en nuestros restaurantes, gracias a la alianza con Escudero Achilipú.</p>  
+                        </div>
+                    </div>  
+                      
+                    <button onclick="abrirWhatsAppRestaurantes()" class="mt-8 w-full bg-brand-red text-white py-4 rounded-xl font-black uppercase tracking-wider hover:bg-red-700 transition shadow-[0_0_15px_rgba(204,0,0,0.5)]">  
+                        Cotizar para mi restaurante  
+                    </button>  
+                </div>  
+  
+            </div>  
+        </div>  
+    </section>  
+  
+    <footer id="contacto" class="tapiz-negro">  
+
+        <div class="footer-climax tapiz-negro relative py-14 sm:py-20 lg:py-24">  
+            <div class="footer-climax-glow" aria-hidden="true"></div>  
+            <i class="fa-solid fa-pepper-hot absolute -left-8 top-1/2 -translate-y-1/2 text-[8rem] sm:text-[12rem] text-brand-red/5 pointer-events-none" aria-hidden="true"></i>  
+            <i class="fa-solid fa-pepper-hot absolute -right-8 top-1/3 text-[6rem] sm:text-[10rem] text-brand-yellow/5 pointer-events-none" aria-hidden="true"></i>  
+
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">  
+                <div class="flex items-center justify-center gap-3 mb-6">  
+                    <span class="h-px w-10 sm:w-16 bg-brand-yellow"></span>  
+                    <span class="text-brand-yellow text-xs sm:text-sm font-bold uppercase tracking-[0.25em]">Hecho en Mexicali, B.C.</span>  
+                    <span class="h-px w-10 sm:w-16 bg-brand-yellow"></span>  
+                </div>  
+
+                <p class="text-gray-300 text-base sm:text-lg md:text-xl font-light max-w-2xl mx-auto mb-4">  
+                    Creamos sabores, construimos marcas, <strong class="text-white font-semibold">dejamos huella.</strong>  
+                </p>  
+
+                <h2 class="font-display footer-climax-sub text-brand-yellow text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-wide leading-none mb-1">  
+                    ACHILIPU  
+                </h2>  
+                <p class="footer-climax-title font-black text-brand-red text-3xl sm:text-5xl md:text-6xl lg:text-7xl uppercase italic leading-tight mb-8">  
+                    ¡Va con todo!!!  
+                </p>  
+
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 max-w-3xl mx-auto">  
+                    <span class="footer-badge inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm text-gray-200 font-semibold">  
+                        <i class="fa-solid fa-hand-sparkles text-brand-yellow"></i> 100% artesanal  
+                    </span>  
+                    <span class="footer-badge inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm text-gray-200 font-semibold">  
+                        <i class="fa-solid fa-leaf text-green-500"></i> Mejor calidad  
+                    </span>  
+                    <span class="footer-badge inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm text-gray-200 font-semibold">  
+                        <i class="fa-solid fa-heart text-red-500"></i> Apoyo local  
+                    </span>  
+                </div>  
+
+                <a href="javascript:void(0)" onclick="abrirWhatsAppGeneral()" class="inline-flex items-center justify-center gap-3 bg-brand-red text-white px-8 sm:px-10 py-4 rounded-full font-black text-base sm:text-lg uppercase tracking-wide hover:bg-red-700 transition shadow-[0_0_25px_rgba(204,0,0,0.45)]">  
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>  
+                    Pide tu sabor ahora  
+                </a>  
+            </div>  
+        </div>  
+
+        <div class="tapiz-negro border-t border-gray-800 py-12 sm:py-14">  
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">  
+                    <a href="#inicio" class="footer-logo-stage mx-auto lg:mx-0">  
+                        <span class="footer-logo-aura" aria-hidden="true"></span>  
+                        <div class="footer-logo-frame">  
+                            <span class="footer-logo-spotlight" aria-hidden="true"></span>  
+                            <span class="footer-logo-corners" aria-hidden="true">  
+                                <i class="fa-solid fa-pepper-hot"></i>  
+                                <i class="fa-solid fa-pepper-hot"></i>  
+                                <i class="fa-solid fa-pepper-hot"></i>  
+                                <i class="fa-solid fa-pepper-hot"></i>  
+                            </span>  
+                            <img src="logo-achilipu.jpg" alt="Logo Escudero Achilipú" class="footer-logo-img">  
+                        </div>  
+                        <span class="footer-logo-caption">Sabor que deja huella</span>  
+                    </a>  
+
+                    <div class="bg-brand-gray/80 border border-gray-800 rounded-2xl p-6 sm:p-8">  
+                        <h4 class="text-lg font-black text-white uppercase tracking-wider mb-6 text-center lg:text-left">  
+                            <i class="fa-solid fa-phone text-brand-yellow mr-2"></i> Contáctanos  
+                        </h4>  
+                        <ul class="space-y-5">  
+                            <li class="flex items-center gap-4 justify-center lg:justify-start">  
+                                <div class="bg-gray-800 w-12 h-12 rounded-full flex items-center justify-center shrink-0 ring-2 ring-[#25D366]/30">  
+                                    <i class="fa-brands fa-whatsapp text-2xl text-[#25D366]"></i>  
+                                </div>  
+                                <div class="text-left">  
+                                    <p class="text-xs uppercase tracking-wider font-bold text-gray-500 mb-1">Pedidos y cotizaciones</p>  
+                                    <a href="javascript:void(0)" onclick="abrirWhatsAppGeneral()" class="text-xl sm:text-2xl font-black text-white hover:text-brand-yellow transition">686 525 0342</a>  
+                                </div>  
+                            </li>  
+                            <li class="flex items-center gap-4 justify-center lg:justify-start">  
+                                <div class="bg-gray-800 w-12 h-12 rounded-full flex items-center justify-center shrink-0 ring-2 ring-brand-red/30">  
+                                    <i class="fa-solid fa-location-dot text-xl text-brand-red"></i>  
+                                </div>  
+                                <div class="text-left">  
+                                    <p class="text-xs uppercase tracking-wider font-bold text-gray-500 mb-1">Origen</p>  
+                                    <p class="text-lg font-bold text-white">Mexicali, Baja California</p>  
+                                </div>  
+                            </li>  
+                        </ul>  
+                    </div>  
+                </div>  
+
+                <div class="flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 mt-10 pt-8 border-t border-gray-800">  
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo_Hecho_en_M%C3%A9xico.svg/200px-Logo_Hecho_en_M%C3%A9xico.svg.png" alt="Hecho en México" class="w-14 sm:w-16 opacity-80 filter invert">  
+                    <div class="text-center sm:text-right text-gray-600 text-xs font-bold uppercase tracking-widest">  
+                        <p>&copy; <span id="year"></span> Escudero Achilipú</p>  
+                        <p class="mt-1 text-gray-700">Diseño digital exclusivo</p>  
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+    </footer>  
+  
+    <div id="barra-movil-cta" class="md:hidden fixed bottom-0 inset-x-0 z-40 tapiz-negro border-t border-brand-yellow/20 px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex gap-2">
+        <a href="#productos" class="flex-1 text-center py-3 rounded-xl border-2 border-brand-yellow text-brand-yellow font-bold text-sm">Catálogo</a>
+        <button type="button" onclick="abrirWhatsAppGeneral()" class="flex-1 py-3 rounded-xl bg-[#25D366] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(37,211,102,0.4)]">
+            <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
+        </button>
+    </div>
+
+    <button type="button" onclick="abrirWhatsAppGeneral()" aria-label="Contactar por WhatsApp" class="whatsapp-float fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-[#25D366] text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(37,211,102,0.5)] z-50 hover:bg-[#128C7E] transition-colors focus:outline-none cursor-pointer">  
+        <i class="fa-brands fa-whatsapp text-3xl sm:text-4xl"></i>  
+    </button>  
+  
+    <script>  
+        const telefonoNegocio = "526865250342";
+  
+        function pedirPorWhatsApp(nombreProducto, precio) {  
+            const mensaje = `¡Hola Escudero Achilipú! 🔥 Me interesa comprar:\n*${nombreProducto}*\nPrecio seleccionado: *$${precio} MXN*\n\n¿Me pueden confirmar disponibilidad y forma de entrega?`;  
+            const url = `https://wa.me/${telefonoNegocio}?text=${encodeURIComponent(mensaje)}`;  
+            window.open(url, '_blank');  
+        }  
+  
+        function abrirWhatsAppGeneral() {  
+            const mensaje = `¡Hola! Vengo de su página web. Me gustaría conocer su catálogo de sabores y opciones.`;  
+            const url = `https://wa.me/${telefonoNegocio}?text=${encodeURIComponent(mensaje)}`;  
+            window.open(url, '_blank');  
+        }  
+  
+        function abrirWhatsAppRestaurantes() {  
+            const mensaje = `¡Hola Escudero Achilipu! 🌶️ Soy restaurantero y vi en su web el servicio "Tu Salsa, Tu Marca". Me gustaría recibir información para personalizar salsas para mi negocio.`;  
+            const url = `https://wa.me/${telefonoNegocio}?text=${encodeURIComponent(mensaje)}`;  
+            window.open(url, '_blank');  
+        }  
+  
+        const btnMenu = document.getElementById('mobile-menu-btn');  
+        const menuMovil = document.getElementById('mobile-menu');  
+        const iconoMenu = document.getElementById('mobile-menu-icon');
+
+        function cerrarMenuMovil() {
+            menuMovil.classList.add('hidden');
+            btnMenu.setAttribute('aria-expanded', 'false');
+            btnMenu.setAttribute('aria-label', 'Abrir menú');
+            iconoMenu.classList.remove('fa-xmark');
+            iconoMenu.classList.add('fa-bars');
+        }
+
+        function abrirMenuMovil() {
+            menuMovil.classList.remove('hidden');
+            btnMenu.setAttribute('aria-expanded', 'true');
+            btnMenu.setAttribute('aria-label', 'Cerrar menú');
+            iconoMenu.classList.remove('fa-bars');
+            iconoMenu.classList.add('fa-xmark');
+        }
+
+        btnMenu.addEventListener('click', () => {  
+            if (menuMovil.classList.contains('hidden')) {
+                abrirMenuMovil();
+            } else {
+                cerrarMenuMovil();
+            }
+        });  
+  
+        const enlacesMenu = menuMovil.querySelectorAll('a');  
+        enlacesMenu.forEach(enlace => {  
+            enlace.addEventListener('click', cerrarMenuMovil);  
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') cerrarMenuMovil();
+        });
+  
+        window.addEventListener('scroll', () => {  
+            const navbar = document.getElementById('navbar');  
+            if (window.scrollY > 10) {  
+                navbar.classList.add('shadow-xl', 'bg-black');  
+                navbar.classList.remove('bg-brand-dark/95');  
+            } else {  
+                navbar.classList.remove('shadow-xl', 'bg-black');  
+                navbar.classList.add('bg-brand-dark/95');  
+            }  
+        });  
+  
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const seccionesReveal = document.querySelectorAll('.reveal-section');
+        if (seccionesReveal.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const observerReveal = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observerReveal.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            seccionesReveal.forEach((sec) => observerReveal.observe(sec));
+        } else {
+            seccionesReveal.forEach((sec) => sec.classList.add('is-visible'));
+        }
+    </script>  
+</body>  
+</html>
