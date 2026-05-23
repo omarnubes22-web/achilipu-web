@@ -34,17 +34,27 @@
         }  
     </script>  
     <style>  
-        /* Fondo gris tipo ladrillos - Palas Miches */
+        /* Fondo madera premium con patrón de chiles */
         body {
-            color:#1a1a1a;
-            background-color:#b8b8b8;
-            background-image:url('https://www.transparenttextures.com/patterns/brick-wall.png');
+            color:#f5f5f5;
+            background-color:#1a0f0a;
+            background-image:url('https://www.transparenttextures.com/patterns/wood-pattern.png');
             background-attachment:fixed;
         }
         .tapiz-negro {
-            background-color:#a8a8a8;
-            background-image:linear-gradient(90deg, rgba(120,120,120,.3) 1px, transparent 1px), linear-gradient(rgba(120,120,120,.3) 1px, transparent 1px), url('https://www.transparenttextures.com/patterns/brick-wall.png');
-            background-size: 50px 50px, 50px 50px, cover;
+            background-color:#0a0a0a;
+            background-image:url('https://www.shutterstock.com/image-vector/chilis-doodle-seamless-pattern-background-260nw-274315103.jpg');
+            background-size: 400px 400px;
+            background-repeat: repeat;
+            opacity: 0.95;
+        }
+        .tapiz-negro::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(10, 10, 10, 0.85);
+            pointer-events: none;
+            z-index: -1;
         }  
         .hero-pattern {
             background-image:
@@ -216,18 +226,17 @@
             backdrop-filter: blur(12px);
         }
         .product-card {
-            background: linear-gradient(145deg, #e8e8e8, #d0d0d0);
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.5);
-            border-color: rgba(100, 100, 100, 0.5);
+            background: linear-gradient(145deg, #1f1f1f, #141414);
+            box-shadow: 5px 5px 15px #040404, -5px -5px 15px #101010;
+            border-color: rgba(55, 55, 55, 0.9);
         }
         .product-card:focus-within {
-            border-color: rgba(204, 0, 0, 0.7);
+            border-color: rgba(255, 179, 0, 0.35);
         }  
         @media (hover: hover) {
             .product-card:hover {
                 transform: translateY(-8px);
                 border-color: #cc0000;
-                background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
             }
         }
         .product-img {
@@ -670,6 +679,7 @@
   </div>
 </header>
 
+    <!-- Confianza / venta rápida -->
     <div class="trust-strip tapiz-negro py-4">
         <div class="max-w-5xl mx-auto px-4 flex flex-wrap justify-center gap-2 sm:gap-3">
             <span class="trust-pill"><i class="fa-brands fa-whatsapp text-[#25D366]"></i> Pedido directo</span>
@@ -679,6 +689,7 @@
         </div>
     </div>
 
+    <!-- Galería: ambas presentaciones (sin competir con el catálogo) -->
     <section id="presentaciones" class="reveal-section py-14 sm:py-20 tapiz-negro border-b border-gray-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10 sm:mb-14">
@@ -722,10 +733,13 @@
       <p class="catalog-cta-hint"><i class="fa-brands fa-whatsapp text-lg"></i> Elige tu salsa y toca <strong class="text-white">Pedir ahora</strong> — te atendemos al instante</p>
     </div>
 
+            <!-- Grid de Salsas -->  
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">  
                   
+                <!-- Salsa 1: Inglesa -->  
                 <div class="product-card rounded-2xl p-1 transition-all duration-300 border border-gray-800 flex flex-col group">  
                     <div class="bg-brand-dark rounded-t-xl h-64 flex items-center justify-center relative overflow-hidden">  
+                        <!-- Placeholder visual imitando botella oscura -->  
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60 z-10"></div>  
                         <img src="salsa-inglesa.jpeg" alt="Salsa Inglesa Achilipú" class="product-img" loading="lazy">  
                         <div class="absolute top-4 left-4 z-20">  
@@ -935,9 +949,11 @@
 
             </div>
         </div>
-    </section>
-
+    </section>  
+  
+    <!-- Sección B2B / Restauranteros (Basado 100% en el flyer) -->  
     <section id="restaurantes" class="reveal-section py-16 sm:py-24 tapiz-negro relative overflow-hidden border-t border-b border-gray-800">  
+        <!-- Decoración de fondo -->  
         <div class="absolute -right-20 -top-20 opacity-5">  
             <i class="fa-solid fa-pepper-hot text-[30rem]"></i>  
         </div>  
@@ -945,6 +961,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">  
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">  
                   
+                <!-- Info Textual (derecha en escritorio) -->  
                 <div class="lg:order-2">  
                     <div class="inline-block bg-brand-red text-white px-4 py-1 rounded font-black uppercase text-sm mb-6">  
                         <i class="fa-solid fa-utensils mr-2"></i> Para Restauranteros  
@@ -986,6 +1003,7 @@
                     </div>  
                 </div>  
   
+                <!-- Gráfico Visual de Marca (izquierda en escritorio) -->  
                 <div class="lg:order-1 bg-[#111111] p-8 md:p-12 rounded-3xl border border-gray-700 shadow-2xl text-center">  
                     <h3 class="text-lg sm:text-xl md:text-2xl font-black text-brand-yellow mb-2 uppercase leading-snug">Personalizar tu salsa = presencia de tu marca</h3>  
                     <p class="text-gray-400 mb-8">Tu receta, tu identidad, tu salsa, tu legado.</p>  
@@ -1006,6 +1024,7 @@
                         </div>  
                     </div>  
   
+                    <!-- Casos de éxito / Kompa Tavo -->  
                     <div class="mt-8 pt-8 border-t border-gray-800">  
                         <p class="text-xs text-brand-yellow font-bold uppercase tracking-widest mb-6 text-center">Salsa de la casa en alianza con:</p>  
                         <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-10">  
@@ -1027,8 +1046,10 @@
         </div>  
     </section>  
   
+    <!-- Footer / Cierre de marca -->  
     <footer id="contacto" class="tapiz-negro">  
 
+        <!-- Bloque protagonista: cierre Achilipú -->  
         <div class="footer-climax tapiz-negro relative py-14 sm:py-20 lg:py-24">  
             <div class="footer-climax-glow" aria-hidden="true"></div>  
             <i class="fa-solid fa-pepper-hot absolute -left-8 top-1/2 -translate-y-1/2 text-[8rem] sm:text-[12rem] text-brand-red/5 pointer-events-none" aria-hidden="true"></i>  
@@ -1071,6 +1092,7 @@
             </div>  
         </div>  
 
+        <!-- Datos de contacto -->  
         <div class="tapiz-negro border-t border-gray-800 py-12 sm:py-14">  
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">  
@@ -1127,6 +1149,7 @@
         </div>  
     </footer>  
   
+    <!-- Barra de conversión móvil -->
     <div id="barra-movil-cta" class="md:hidden fixed bottom-0 inset-x-0 z-40 tapiz-negro border-t border-brand-yellow/20 px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex gap-2">
         <a href="#productos" class="flex-1 text-center py-3 rounded-xl border-2 border-brand-yellow text-brand-yellow font-bold text-sm">Catálogo</a>
         <button type="button" onclick="abrirWhatsAppGeneral()" class="flex-1 py-3 rounded-xl bg-[#25D366] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(37,211,102,0.4)]">
@@ -1134,33 +1157,42 @@
         </button>
     </div>
 
+    <!-- Botón Flotante de WhatsApp Global -->  
     <button type="button" onclick="abrirWhatsAppGeneral()" aria-label="Contactar por WhatsApp" class="whatsapp-float fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-[#25D366] text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(37,211,102,0.5)] z-50 hover:bg-[#128C7E] transition-colors focus:outline-none cursor-pointer">  
         <i class="fa-brands fa-whatsapp text-3xl sm:text-4xl"></i>  
     </button>  
   
+    <!-- Scripts de Funcionalidad -->  
     <script>  
-        const telefonoNegocio = "526865250342";
+        // --- CONFIGURACIÓN DEL NÚMERO (Actualizado con el del flyer) ---  
+        // Código 52 para México + Número 6865250342 
+        const telefonoNegocio = "526865250342";   
   
+        // Función para comprar un producto específico al menudeo  
         function pedirPorWhatsApp(nombreProducto, precio) {  
             const mensaje = `¡Hola Escudero Achilipú! 🔥 Me interesa comprar:\n*${nombreProducto}*\nPrecio seleccionado: *$${precio} MXN*\n\n¿Me pueden confirmar disponibilidad y forma de entrega?`;  
             const url = `https://wa.me/${telefonoNegocio}?text=${encodeURIComponent(mensaje)}`;  
             window.open(url, '_blank');  
         }  
   
+        // Función para contacto general  
         function abrirWhatsAppGeneral() {  
             const mensaje = `¡Hola! Vengo de su página web. Me gustaría conocer su catálogo de sabores y opciones.`;  
             const url = `https://wa.me/${telefonoNegocio}?text=${encodeURIComponent(mensaje)}`;  
             window.open(url, '_blank');  
         }  
   
+        // Función específica para B2B / Restaurantes  
         function abrirWhatsAppRestaurantes() {  
             const mensaje = `¡Hola Escudero Achilipu! 🌶️ Soy restaurantero y vi en su web el servicio "Tu Salsa, Tu Marca". Me gustaría recibir información para personalizar salsas para mi negocio.`;  
             const url = `https://wa.me/${telefonoNegocio}?text=${encodeURIComponent(mensaje)}`;  
             window.open(url, '_blank');  
         }  
   
+        // Menú Móvil Toggle  
         const btnMenu = document.getElementById('mobile-menu-btn');  
         const menuMovil = document.getElementById('mobile-menu');  
+          
         const iconoMenu = document.getElementById('mobile-menu-icon');
 
         function cerrarMenuMovil() {
@@ -1194,8 +1226,9 @@
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') cerrarMenuMovil();
-        });
+        });  
   
+        // Cambiar estilo del Navbar al hacer scroll  
         window.addEventListener('scroll', () => {  
             const navbar = document.getElementById('navbar');  
             if (window.scrollY > 10) {  
@@ -1207,8 +1240,10 @@
             }  
         });  
   
+        // Año actual en el footer  
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        // Animación al entrar en pantalla (ventas / engagement)
         const seccionesReveal = document.querySelectorAll('.reveal-section');
         if (seccionesReveal.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             const observerReveal = new IntersectionObserver((entries) => {
